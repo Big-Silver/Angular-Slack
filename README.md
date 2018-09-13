@@ -17,11 +17,22 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Install & Run
 
+### Frontend
+
 ```
 git clone ttps://github.com/Big-Silver/Angular-Slack.git
 cd Angular-Slack
 npm install
 npm start
+```
+
+### Backend
+
+```
+cd server
+npm install
+cd ..
+npm run dev:server
 ```
 
 ## Build
