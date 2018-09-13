@@ -1,0 +1,24 @@
+<div class="login-register-form">
+  <h1>Login</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+    <mat-form-field>
+      <input type="email" matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">Please enter a valid email address</mat-error>
+      <mat-error *ngIf="loginForm.get('email').hasError('required')">Email is <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="password" matInput placeholder="Password" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is <strong>required</strong></mat-error>
+      <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Password must be at least 8 characters</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="loginForm.status === 'INVALID'">Login</button>
+
+    <p class="additional">
+      Don't have an account? Please <a routerLink="/register">sign up</a>
+    </p>
+  </form>
+</div>

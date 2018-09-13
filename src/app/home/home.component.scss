@@ -1,0 +1,37 @@
+.home {
+  display: flex;
+
+  .chat-main {
+    color: #555459;
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    .chat-header {
+      margin: 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .chat-input {
+      padding-right: 12px;
+      padding-top: 5px;
+
+      textarea {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+        padding: 5px;
+        margin-right: 10px;
+        font-size: 16px;
+        line-height: 1.5em;
+        resize: none;
+        max-height: 80px;
+      }
+    }
+  }
+}
