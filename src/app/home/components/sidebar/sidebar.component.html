@@ -1,0 +1,15 @@
+<div class="sidebar">
+  <app-dropdown label="Your Team"></app-dropdown>
+
+  <div class="sidebar-content">
+    <app-sidebar-group title="channels" [menus]="channels"></app-sidebar-group>
+    <app-sidebar-group title="direct messages" [menus]="directChannels"></app-sidebar-group>
+  </div>
+  <app-dropdown
+    [title]="username"
+    [menus]="menus"
+    [defaultDir]="1"
+    showArrow="true"
+    (itemClicked)="menuClick($event)"
+  ></app-dropdown>
+</div>

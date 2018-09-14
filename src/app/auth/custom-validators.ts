@@ -1,18 +1,18 @@
 import {AbstractControl} from '@angular/forms';
 export class CustomValidators {
   static matchPassword(AC: AbstractControl) {
-    const password = AC.get('password').value;
-    const confirmPassword = AC.get('confirm').value;
+    let password = AC.get('password').value;
+    let confirmPassword = AC.get('confirm').value;
 
-    if (password !== confirmPassword) {
-      AC.get('confirm').setErrors( {matchpassword: true} );
+    if(password != confirmPassword) {
+      AC.get('confirm').setErrors( {matchpassword: true} )
     } else {
-      return null;
+      return null
     }
   }
 
   static passwordStrength(AC: AbstractControl) {
-    const password = AC.get('password').value;
+    let password = AC.get('password').value;
 
     const letter = /[A-Za-z]+/g;
     const number = /\d+/g;

@@ -1,0 +1,22 @@
+:host {
+	flex: 1;
+	overflow: auto;
+    padding: 30px 10px
+}
+
+.message {
+	margin-bottom: 1em;
+
+	.name {
+		font-weight: bold;
+	}
+
+	.time {
+		color: lightgray;
+	}
+
+	.text {
+		display: block;
+		padding: .5em;
+	}
+}

@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <div class="dd-header" (click)="menuClick()">
+    <span class="label">{{ title }}</span>
+    <span class="arrow" *ngIf="showArrow">
+      <span *ngIf="dir === 1"><i class="icon ion-chevron-down"></i></span>
+      <span *ngIf="dir === 2"><i class="icon ion-chevron-up"></i></span>
+    </span>
+  </div>
+  <div class="dd-content" *ngIf="menuOpen">
+    <div class="dd-item" (click)="itemClick(item.id)" *ngFor="let item of menus">
+      {{ item.label }}
+    </div>
+  </div>
+</div>

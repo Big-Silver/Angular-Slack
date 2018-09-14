@@ -1,4 +1,15 @@
 <div class="home">
-  <p>welcome</p>
-  <button (click)="logout()">Log out</button>
+  <app-sidebar></app-sidebar>
+  <div class="chat-main">
+    <h1 class="chat-header">
+      #Channel
+    </h1>
+    <app-messages [messages]="messages"></app-messages>
+    <div class="chat-input">
+      <textarea
+        autosize
+        [(ngModel)]="msgToSend"
+        (keydown)="keydown($event)"></textarea>
+    </div>
+  </div>
 </div>

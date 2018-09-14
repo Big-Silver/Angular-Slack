@@ -1,0 +1,13 @@
+.sidebar {
+  background: #4D384B;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 280px;
+  height: 100vh;
+
+  .sidebar-content {
+    flex: 1;
+  }
+}

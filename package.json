@@ -8,8 +8,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "dev:server": "nodemon ./server/server.js --exec babel-node"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomeModule'
   },
   {
+    path: 'change-password',
+    loadChildren: './change-password/change-password.module#ChangePasswordModule'
+  },
+  {
     path: '',
     loadChildren: './auth/auth.module#AuthModule'
   },

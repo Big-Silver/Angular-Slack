@@ -1,0 +1,14 @@
+<div class="sidebar-group">
+  <div class="group-name">
+    <span class="label">{{ title }}</span>
+  </div>
+  <div class="group-list">
+    <div
+      class="item"
+      (click)="itemClick(item.id)"
+      *ngFor="let item of menus"
+    >
+      {{ item.label }}
+    </div>
+  </div>
+</div>

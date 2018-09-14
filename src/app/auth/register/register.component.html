@@ -16,7 +16,7 @@
     <mat-form-field>
       <input type="password" matInput placeholder="Password" formControlName="password">
       <mat-error *ngIf="registerForm.get('password').hasError('required')">Password is <strong>required</strong></mat-error>
-      <mat-error *ngIf="registerForm.get('password').hasError('minlength')">Password must be at least 8 characters</mat-error>
+      <mat-error *ngIf="registerForm.get('password').hasError('minlength')">Password must be at least 6 characters</mat-error>
     </mat-form-field>
 
     <mat-form-field>
