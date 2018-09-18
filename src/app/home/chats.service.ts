@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { ApiService } from '../core/services/api.service';
 import { UserService } from '../core/services/user.service';
 import { User } from '../core/models';
@@ -12,19 +13,27 @@ const baseURL = environment.baseURL;
 @Injectable()
 export class ChatsService {
   msgs = new BehaviorSubject<Message[]>([]);
+  isSend = new BehaviorSubject<boolean>(false);
 
   private socket;
   private user: User;
+  private isConnected: Boolean;
+  private interval;
 
-  constructor(private api: ApiService, private userService: UserService) {
+  constructor(
+    private api: ApiService,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+  ) {
     this.userService.user.subscribe(_user => { this.user = _user; });
+    this.isConnected = true;
+    this.interval = null;
   }
 
   getChats() {
     this.api.getChats(this.user.token)
       .subscribe((messages: Message[]) => {
         this.msgs.next(messages);
-        console.log(messages);
       });
   }
 
@@ -36,7 +45,18 @@ export class ChatsService {
     });
 
     this.socket.on('disconnect', () => {
-      this.socket.close();
+      this.isConnected = false;
+      this.connectionFailMessage();
+      this.isSend.next(false);
+      this.interval = window.setInterval(() => {
+        if (this.isConnected) {
+          clearInterval(this.interval);
+          this.interval = null;
+          return;
+        }
+        this.socket.connect();
+      }, 5000);
+      // this.socket.close();
     });
 
     this.socket.on('receive', (data: { msg: Message }) => {
@@ -44,6 +64,15 @@ export class ChatsService {
         ...this.msgs.value,
         data.msg
       ]);
+    });
+
+    this.socket.on('connect', () => {
+      this.isSend.next(true);
+      if (!this.isConnected) {
+        this.connectionSuccessMessage();
+      }
+      this.isConnected = true;
+      this.getChats();
     });
   }
 
@@ -53,5 +82,27 @@ export class ChatsService {
 
   disconnect() {
     this.socket.disconnect();
+  }
+
+  private connectionFailMessage() {
+    setTimeout(() => {
+      this.snackBar.open(`Try to reconnect.`, 'close', {
+        duration: 10000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: 'error-msg'
+      });
+    });
+  }
+
+  private connectionSuccessMessage() {
+    setTimeout(() => {
+      this.snackBar.open(`The network was reconnected.`, 'close', {
+        duration: 10000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: 'welcome-msg'
+      });
+    });
   }
 }

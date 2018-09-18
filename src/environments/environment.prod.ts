@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseURL: 'https://reslack-api.herokuapp.com'
+  baseURL: 'https://angular-slack-api.herokuapp.com'
 };

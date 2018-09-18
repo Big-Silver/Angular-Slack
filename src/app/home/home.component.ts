@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   user$: any;
   showWelcome = true;
   msgToSend = '';
+  isSend = true;
   messages: Message[] = [];
 
   constructor(
@@ -32,11 +33,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.chats.getChats();
+    // this.chats.getChats();
     this.chats.initSocket();
 
     this.chats.msgs.subscribe((value: Message[]) => {
       this.messages = value;
+    });
+
+    this.chats.isSend.subscribe((value: boolean) => {
+      this.isSend = value;
     });
   }
 

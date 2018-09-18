@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import { Message } from '../../models';
 
 @Component({
@@ -7,12 +7,20 @@ import { Message } from '../../models';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
+  @ViewChild('message_board') private messageContainer: ElementRef;
 
   @Input() messages: Message[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+        this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
+    } catch(err) { }                 
   }
 
 }

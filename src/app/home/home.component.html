@@ -8,8 +8,10 @@
     <div class="chat-input">
       <textarea
         autosize
+        [disabled]="!isSend"
         [(ngModel)]="msgToSend"
-        (keydown)="keydown($event)"></textarea>
+        (keydown)="keydown($event)">
+      </textarea>
     </div>
   </div>
 </div>

@@ -4,19 +4,24 @@
     padding: 30px 10px
 }
 
-.message {
-	margin-bottom: 1em;
+.message-board {
+	overflow-y: auto;
+	height: 100%;
 
-	.name {
-		font-weight: bold;
-	}
-
-	.time {
-		color: lightgray;
-	}
-
-	.text {
-		display: block;
-		padding: .5em;
+	.message {
+		margin-bottom: 1em;
+	
+		.name {
+			font-weight: bold;
+		}
+	
+		.time {
+			color: lightgray;
+		}
+	
+		.text {
+			display: block;
+			padding: .5em;
+		}
 	}
 }

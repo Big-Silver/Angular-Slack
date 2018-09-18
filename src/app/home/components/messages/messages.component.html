@@ -1,5 +1,7 @@
-<div class="message" *ngFor="let msg of messages">
-  <span class="name">@{{ msg.name }}</span>
-  <span class="time">{{ msg.time | date:'mediumTime' }}</span> <br/>
-  <span class="text">{{ msg.text }}</span>
+<div #message_board class="message-board" [scrollTop]="message_board.scrollHeight">
+  <div class="message" *ngFor="let msg of messages">
+    <span class="name">@{{ msg.name }}</span>
+    <span class="time">{{ msg.time | date:'mediumTime' }}</span> <br/>
+    <span class="text">{{ msg.text }}</span>
+  </div>
 </div>
